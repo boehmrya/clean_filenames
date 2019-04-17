@@ -1,0 +1,5 @@
+name: Clean Filenames
+type: module
+description: 'A number of ways to clean filenames in drupal'
+package: Media
+core: 8.x

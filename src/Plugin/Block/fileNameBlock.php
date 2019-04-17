@@ -1,15 +1,17 @@
 <?php
 
-namespace Drupal\block_example\Plugin\Block;
+namespace Drupal\clean_filenames\Plugin\Block;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Provides a list of 10 random files block.
  *
  * @Block(
- *   id = "example_uppercase",
- *   admin_label = @Translation("Example: uppercase this please")
+ *   id = "clean_filename",
+ *   admin_label = @Translation("File name block")
  * )
  */
 class FileNameBlock extends BlockBase {
@@ -19,8 +21,15 @@ class FileNameBlock extends BlockBase {
    */
   public function build() {
     return [
-      '#markup' => $this->t("This block's title is changed to uppercase. Any block title which contains 'uppercase' will also be changed to uppercase."),
+      '#markup' => $this->t("A list of random filenames"),
     ];
   }
+
+  /**
+  * {@inheritdoc}
+  */
+ protected function blockAccess(AccountInterface $account) {
+   return AccessResult::allowedIfHasPermission($account, 'administer content');
+ }
 
 }
