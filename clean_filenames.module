@@ -38,7 +38,9 @@ use Drupal\Core\Block\BlockPluginInterface;
  * only change the "example_uppercase" block we would use the function:
  * hook_block_view_example_uppercase_alter().
  */
-function block_example_block_view_alter(array &$build, BlockPluginInterface $block) {
+function clean_filenames_block_view_alter(array &$build, BlockPluginInterface $block) {
+  dpm($block->getConfiguration()['provider']);
+
   // We'll search for the string 'uppercase'.
   $definition = $block->getPluginDefinition();
   if ((!empty($build['#configuration']['label']) && mb_strpos($build['#configuration']['label'], 'uppercase')) || (!empty($definition['subject']) && mb_strpos($definition['subject'], 'uppercase'))) {
