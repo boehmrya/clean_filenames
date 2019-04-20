@@ -39,7 +39,8 @@ use Drupal\Core\Block\BlockPluginInterface;
  * hook_block_view_example_uppercase_alter().
  */
 function clean_filenames_block_view_alter(array &$build, BlockPluginInterface $block) {
-  dpm($block->getConfiguration()['provider']);
+  //dpm($block->getConfiguration()['provider']);
+  //$messenger = \Drupal::messenger()->addWarning(t('No active batch.'));
 
   // We'll search for the string 'uppercase'.
   $definition = $block->getPluginDefinition();
